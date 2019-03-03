@@ -13,7 +13,7 @@
         const list = document.getElementById("dataList");
         list.innerHTML = "";
 
-        fetch("GET", "https://jsonplaceholder.typicode.com/users")
+        fetch("https://jsonplaceholder.typicode.com/users")
           .then(res => res.json())
           .then(users => {
             for (let i = 0; i < users.length; i++) {
