@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <hader>
+    <meta charset="utf-8" />
+    <tile>Rest API practice</tile>
+  </hader>
+  <body onload="getData()">
+    <ul>
+      <div id="dataList"></div>
+    </ul>
+    <script>
+      function getData() {
+        const list = document.getElementById("dataList");
+        list.innerHTML = "";
+
+        fetch("GET", "https://jsonplaceholder.typicode.com/users")
+          .then(res => res.json())
+          .then(users => {
+            for (let i = 0; i < users.length; i++) {
+              list.innerHTML += `<li>${users[i].id} ${users[i].name} ${users[i].email}</li>`;
+            }
+          })
+          .catch(err => console.error(err));
+      }
+    </script>
+  </body>
+</html>
