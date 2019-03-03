@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <hader>
+    <meta charset="utf-8" />
+  </hader>
+  <body onload="getData()">
+    <ul>
+      <div id="dataList"></div>
+    </ul>
+    <script>
+      function getData() {
+        fetch("https://www.reddit.com/r/food/top.json?limit=10")
+          .then(res => res.json())
+          .then(res => res.data.children)
+          .then(articles => {
+            for (let i = 0; i < articles.length; i++) {
+              console.log(articles[i].data.title);
+            }
+          })
+          .catch(err => console.log(err));
+      }
+    </script>
+  </body>
+</html>
