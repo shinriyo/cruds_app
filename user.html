@@ -13,14 +13,11 @@
         const list = document.getElementById("dataList");
         list.innerHTML = "";
 
-        fetch("GET", "https://jsonplaceholder.typicode.com/users")
+        fetch("GET", "https://jsonplaceholder.typicode.com/users/1")
           .then(res => res.json())
-          .then(users => {
-            for (let i = 0; i < users.length; i++) {
-              list.innerHTML += `<li>${users[i].id} ${users[i].name} ${users[i].email}</li>`;
-            }
-          })
-          .catch(err => console.log(err));
+          .then(user => {
+            console.log(user.name);
+          });
       }
     </script>
   </body>
