@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <hader>
+    <meta charset="utf-8" />
+    <tile>Rest API practice</tile>
+  </hader>
+  <body onload="getData()">
+    <ul>
+      <div id="dataList"></div>
+    </ul>
+    <script>
+      function getData() {
+        const list = document.getElementById("dataList");
+        list.innerHTML = "";
+
+        fetch("https://jsonplaceholder.typicode.com/users")
+          .then(res => res.json())
+          .then(users => {
+            for (let i = 0; i < users.length; i++) {
+              console.log(users[i].name);
+            }
+          });
+      }
+    </script>
+  </body>
+</html>
