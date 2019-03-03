@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <hader>
+    <meta charset="utf-8" />
+    <tile>Rest API practice</tile>
+  </hader>
+  <body onload="getData()">
+    <ul>
+      <div id="dataList"></div>
+    </ul>
+    <script>
+      function getData() {
+        const list = document.getElementById("dataList");
+        list.innerHTML = "";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+        xhr.onload = function(e) {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              var users = JSON.parse(xhr.responseText);
+              for (let i = 0; i < users.length; i++) {
+                list.innerHTML += `<li>${users[i].id} ${users[i].name} ${users[i].email}</li>`;
+              }
+            } else {
+              console.error(xhr.statusText);
+            }
+          }
+        };
+        xhr.onerror = function(e) {
+          console.error(hxr.statusText);
+        };
+        xhr.send(null);
+      }
+    </script>
+  </body>
+</html>
