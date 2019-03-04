@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Rest API practice</title>
+  </head>
+  <body>
+    <h3>Create data</h3>
+    <div>
+      <input id="siteURL" placeholder="Site Name" />
+    </div>
+    <div>
+      <input id="siteURL" placeholder="Site URL" />
+    </div>
+    <button onclick="createData()">Create</button>
+
+    <hr />
+
+    <h3>Read data</h3>
+    <button onclick="readData()">Read</button>
+    <ul>
+      <div id="dataList"></div>
+    </ul>
+
+    <hr />
+
+    <h3>Update data</h3>
+    <div>
+      <input id="updateId" placeholder="ID" />
+    </div>
+    <div>
+      <input id="updateName" placeholder="Site Name" />
+    </div>
+    <div>
+      <input id="updateName" placeholder="Site URL" />
+    </div>
+    <button onclick="updateData()">Update</button>
+
+    <hr />
+
+    <h3>Delete data</h3>
+    <div>
+      <input id="deleteId" placeholder="ID" />
+    </div>
+    <button onclick="deleteData()">Delete</button>
+
+    <script src="myscript.js"></script>
+  </body>
+</html>
