@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +19,10 @@ class App extends Component {
   }
 
   handleNewURLInput(e) {
+    this.setState({ siteURL: e.target.value });
+  }
+
+  handleUpdateIdInput(e) {
     this.setState({ updateId: e.target.value });
   }
 
@@ -44,16 +46,17 @@ class App extends Component {
       url: this.state.siteURL,
     };
 
-    const site = this.site.sites;
-    site.push(siteInfo);
+    const sites = this.state.sites;
+    sites.push(siteInfo);
     this.setState({ sites: sites });
-    this.setState({ sites: sites });
+    this.setState({ siteName: "" });
+    this.setState({ siteURL: "" });
   }
 
   updateData() {
-    if (this.state.siteName === "" || this.state.updateName === "" || this.state.upateURL === "") return;
+    if (this.state.updateId === "" || this.state.updateName === "" || this.state.updateURL === "") return;
 
-    const sites = this.sites;
+    const sites = this.state.sites;
     sites[Number(this.state.updateId)] = {
       name: this.state.updateName,
       url: this.state.updateURL,
@@ -69,7 +72,7 @@ class App extends Component {
   deleteData() {
     if (this.state.deleteId === "") return;
 
-    const sites = this.sites;
+    const sites = this.state.sites;
     sites.splice(Number(this.state.deleteId), 1);
     this.setState({ sites: sites });
 
@@ -79,7 +82,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h3>Create Data</h3>
+        <h3>Create data</h3>
         <div>
           <input value={this.state.siteName} onChange={this.handleNewNameInput.bind(this)} placeholder="Site Name" />
         </div>
@@ -89,18 +92,16 @@ class App extends Component {
         <button onClick={this.createData.bind(this)}>Create</button>
         <hr />
         <h3>Read data</h3>
-          
         <ul>
-          {this.state.sites.map(site => {
+          {this.state.sites.map((site, i) => {
             return (
-              <li key={site.id}>
-                {site.id}
+              <li key={i}>
+                {i}
                 {site.name}
-                {site.url}
+                {site.url}               
               </li>
             );
           })}
-                  
         </ul>
                
         <hr />
@@ -120,7 +121,7 @@ class App extends Component {
         </div>
         <button onClick={this.updateData.bind(this)}>Update</button>
         <hr />
-         <h3>Delete data</h3>       
+        <h3>Delete data</h3>       
         <div>
           <input value={this.state.deleteId} onChange={this.handleDeleteIdInput.bind(this)} placeholder="ID" />
         </div>
